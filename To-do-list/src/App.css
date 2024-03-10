@@ -1,0 +1,5 @@
+.body {
+    background-color: black;
+    color: white; /* Optional: Set text color to contrast with the background */
+    height: 100vh;
+}

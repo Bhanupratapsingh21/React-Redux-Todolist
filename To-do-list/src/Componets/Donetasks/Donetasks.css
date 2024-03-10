@@ -1,0 +1,183 @@
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cards .red {
+    background-color: #f43f5e;
+
+}
+
+.cards .blue {
+    background-color: #3b82f6;
+}
+
+.cards .green {
+    background-color: #22c55e;
+}
+
+
+.textbox {
+    text-align: left;
+    font-weight: 700;
+    font-size: 15px;
+}
+.buttonbox{
+    align-content: center;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cards .card:hover {
+    transform: scale(1, 1);
+}
+
+.cards:hover>.card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+}
+
+@media (min-width: 700px) {
+    .Tasksbox {
+        height: max-content + 100vh;
+        padding-top: 100px;
+        padding-left: 5vw;
+        width: 90vw;
+        padding-right: 5vw;
+        padding-bottom: 30vh;
+    }
+    .cards .card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        height: max-content + 120px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        overflow-x: auto;
+        width: 90vw;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        transition: 400ms;
+    }
+    
+    .selectinputtasks{
+        margin-top: 2px;
+        width: 40vw;
+        height: 50px;
+        border-radius: 10px;
+        border: 1px solid rgb(48, 45, 45);
+        background-color: black;
+        padding: 10px;
+        color: white;
+        transition: .1s;
+      }
+}
+
+@media (max-width: 700px) {
+    .Tasksbox {
+        height: max-content + 100vh;
+        padding-top: 270px;
+        padding-left: 5vw;
+        width: 90vw;
+        padding-right: 5vw;
+        padding-bottom: 30vh;
+    }
+    .cards .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        text-align: center;
+        height: max-content + 160px ;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 13px;
+        overflow-x: auto;
+        width: 90vw;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        transition: 400ms;
+    }
+    
+    .selectinputtasks{
+        width: 90vw;
+        height: 50px;
+        margin-top: -10px;
+        border-radius: 10px;
+        border: 1px solid rgb(48, 45, 45);
+        background-color: black;
+        padding: 10px;
+        color: white;
+        margin-bottom: 30px;
+        transition: .1s;
+      }
+}
+
+#edit:hover{
+    transition-duration: .3s;
+    background-color: #0045b4;
+}
+#delete:hover{
+    transition-duration: .3s;
+    background-color: #f80029;
+}
+.Btn {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(27, 27, 27);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+}
+
+.icon2 {
+    width: 18px;
+    height: 5px;
+    border-bottom: 2px solid rgb(182, 143, 255);
+    border-left: 2px solid rgb(182, 143, 255);
+    border-right: 2px solid rgb(182, 143, 255);
+}
+
+
+.Btn:hover {
+    opacity: 1;
+    transition-duration: .3s;
+}
+
+.Btn:hover .icon2 {
+    border-bottom: 2px solid rgb(235, 235, 235);
+    border-left: 2px solid rgb(235, 235, 235);
+    border-right: 2px solid rgb(235, 235, 235);
+}
+
+.Btn:hover .svgIcon {
+    fill: rgb(255, 255, 255);
+    animation: slide-in-top 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
