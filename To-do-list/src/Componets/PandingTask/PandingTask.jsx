@@ -8,15 +8,19 @@ import { useNavigate } from "react-router-dom"
 function PandingTask (){
     
     const navigate = useNavigate()
-
+    const [value2 , setvalue] = useState("Pending")
     const todos = useSelector(state => state.todos)
     
-    const [filterdata, setfilterdata] = useState([])
+    const [filterdata, setfilterdata] = useState(todos.filter((todo) => todo.HasCompleted === false))
 
+    
     useEffect(() => {
-        setfilterdata(todos.filter((todo) => todo.HasCompleted === false))
+        setfilterdata(todos.filter((todo) => todo.Priority === value2))
+        setvalue("Pending")
     }, [todos])
-
+    useEffect(()=>{
+        setfilterdata(todos.filter((todo) => todo.HasCompleted === false))
+    },[todos])
     
 
     const dispatch = useDispatch()
@@ -32,16 +36,18 @@ function PandingTask (){
     const handleFilterchange = (e) => {
         let value = e.target.value
         let filterdataw
-
+        console.log(value)
         if (value === 'Pending') {
             filterdataw = todos.filter((todo) => todo.HasCompleted === false)
+            setvalue("Pending")
             setfilterdata(filterdataw)
         } else if (value === "Completed") {
             filterdataw = todos.filter((todo) => todo.HasCompleted === true)
+            setvalue('Completed')
             setfilterdata(filterdataw)
         } else {
-            filterdataw = todos.filter((todo) => todo.Priority === value)
-            filterdataw = todos.filter((todo) => todo.HasCompleted === false)
+            filterdataw = todos.filter((todo) => todo.HasCompleted === false && todo.Priority === value) 
+            setvalue(value)
             setfilterdata(filterdataw)
         }
         
@@ -55,7 +61,7 @@ function PandingTask (){
                         <h1 className="login2">Panding Todo's</h1>
                     </div>
                     <div>
-                        <select onChange={handleFilterchange} className='selectinputtasks' name="" id="">
+                        <select onChange={handleFilterchange} value={value2} className='selectinputtasks' name="" id="">
                             <option value="Pending">Pending</option>
                             <option value="High">Priority : High</option>
                             <option value="Medium">Priority : Medium</option>
